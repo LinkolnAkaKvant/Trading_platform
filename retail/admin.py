@@ -7,16 +7,26 @@ from retail.models import TradeNetwork, Contact, Product
 
 
 class ContactInline(admin.TabularInline):
+    """
+    Inline модель для TradeNetworkAdmin
+    """
     model = Contact
     extra = 1
 
 
 class ProductInline(admin.TabularInline):
+    """
+    Inline модель для TradeNetworkAdmin
+    """
     model = Product
     extra = 1
 
 
 class TradeNetworkAdmin(admin.ModelAdmin):
+    """
+    Админ панель для модели TradeNetwork. Имеет фильтрации по городам, ссылки на поставщиков,
+     возможность удалять задолженность.
+    """
     form = TradeNetworkForm
     list_display = ['title', 'level', 'supplier_link', 'debt', 'created_at']
     list_filter = ['contacts__city']
@@ -43,6 +53,9 @@ admin.site.register(TradeNetwork, TradeNetworkAdmin)
 
 
 class ContactAdmin(admin.ModelAdmin):
+    """
+    Админ панель для модели Contact
+    """
     list_display = ['network', 'email', 'country', 'city', 'street', 'house_number']
     search_fields = ['email', 'country', 'city']
     list_filter = ['country', 'city']
@@ -52,6 +65,9 @@ admin.site.register(Contact, ContactAdmin)
 
 
 class ProductAdmin(admin.ModelAdmin):
+    """
+    Админ панель для модели Product
+    """
     list_display = ['network', 'title', 'model', 'release_date']
     search_fields = ['title', 'model']
     list_filter = ['release_date']

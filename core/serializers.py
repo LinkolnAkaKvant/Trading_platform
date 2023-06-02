@@ -4,6 +4,9 @@ from core.models import User
 
 
 class UserSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для подели пользователя
+    """
     password = serializers.CharField(required=True, write_only=True)
 
     class Meta:
@@ -12,6 +15,9 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class LoginSerializer(serializers.Serializer):
+    """
+    Сериализатор для работы с логированием пользователя
+    """
     username = serializers.CharField(required=True)
     password = serializers.CharField(required=True)
 
@@ -25,6 +31,9 @@ class LoginSerializer(serializers.Serializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    """
+    Сериализатор для работы с профилем пользователя
+    """
     class Meta:
         model = User
         fields = ['id', 'username', 'email', 'first_name', 'last_name']

@@ -5,6 +5,9 @@ from retail.models import TradeNetwork
 
 
 class TradeNetworkForm(forms.ModelForm):
+    """
+    Форма для создания ссылки на поставщика в админ панели.
+    """
     class Meta:
         model = TradeNetwork
         fields = '__all__'

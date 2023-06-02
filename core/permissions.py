@@ -2,6 +2,9 @@ from rest_framework import permissions
 
 
 class IsAdminOrSelf(permissions.BasePermission):
+    """
+    Пермишн, определяющий, кто может создавать пользователя и проводить с профилем необходимые действия
+    """
     def has_permission(self, request, view):
         if view.action == 'create':
             return True

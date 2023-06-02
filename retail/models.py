@@ -2,6 +2,9 @@ from django.db import models
 
 
 class TradeNetwork(models.Model):
+    """
+    Модель торговой сети с иерархией
+    """
     LEVELS = (
         (0, 'Завод'),
         (1, 'Розничная сеть'),
@@ -26,11 +29,11 @@ class Contact(models.Model):
     Модель контактов
     """
     network = models.ForeignKey(TradeNetwork, on_delete=models.CASCADE, related_name='contacts')
-    email = models.EmailField()
-    country = models.CharField(max_length=255)
-    city = models.CharField(max_length=255)
-    street = models.CharField(max_length=255)
-    house_number = models.CharField(max_length=10)
+    email = models.EmailField(null=True, blank=True, unique=True)
+    country = models.CharField(max_length=40, null=True, blank=True)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    street = models.CharField(max_length=100, null=True, blank=True)
+    house_number = models.CharField(max_length=10, null=True, blank=True)
 
     class Meta:
         verbose_name = 'Контакт'
@@ -46,7 +49,7 @@ class Product(models.Model):
     """
     network = models.ForeignKey(TradeNetwork, on_delete=models.CASCADE, related_name='products')
     title = models.CharField(max_length=255)
-    model = models.CharField(max_length=255)
+    model = models.CharField(max_length=255, null=True, blank=True)
     release_date = models.DateField()
 
     class Meta:

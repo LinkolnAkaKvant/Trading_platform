@@ -8,10 +8,17 @@ from retail.serializers import TradeNetworkSerializer, ContactSerializer, Produc
 
 
 class MyPagination(PageNumberPagination):
+    """
+    Специальный класс назначения пагинации для вью, которые выводят небольшой массив информации.
+    """
     page_size = 5
 
 
 class TradeNetworkViewSet(viewsets.ModelViewSet):
+    """
+    Вью для работы с торговой сетью, имеет переопределенную функцию perform_update,
+    для запрета обновления через API поля DEBT
+    """
     queryset = TradeNetwork.objects.all()
     serializer_class = TradeNetworkSerializer
     permission_classes = [IsActiveStaffPermission]
@@ -23,6 +30,9 @@ class TradeNetworkViewSet(viewsets.ModelViewSet):
 
 
 class ContactViewSet(viewsets.ModelViewSet):
+    """
+    Вью для работы с контактами
+    """
     queryset = Contact.objects.all()
     permission_classes = [IsActiveStaffPermission]
     serializer_class = ContactSerializer
@@ -30,6 +40,9 @@ class ContactViewSet(viewsets.ModelViewSet):
 
 
 class ProductViewSet(viewsets.ModelViewSet):
+    """
+    Вью для работы с продуктами
+    """
     queryset = Product.objects.all()
     permission_classes = [IsActiveStaffPermission]
     serializer_class = ProductSerializer
@@ -37,6 +50,9 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 
 class TradeNetworkDetailViewSet(viewsets.ModelViewSet):
+    """
+    Вью для детального отображения торговой сети с имеющимися контактами и продуктами
+    """
     queryset = TradeNetwork.objects.all()
     serializer_class = TradeNetworkDetailSerializer
     permission_classes = [IsActiveStaffPermission]

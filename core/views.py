@@ -9,6 +9,9 @@ from core.serializers import UserSerializer, LoginSerializer, ProfileSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
+    """
+    Вью для работы с пользователем
+    """
     queryset = User.objects.all()
     serializer_class = UserSerializer
     permission_classes = [IsAdminOrSelf]
@@ -21,6 +24,9 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class LoginView(generics.GenericAPIView):
+    """
+    Вью для логирования пользователя
+    """
     serializer_class = LoginSerializer
     permission_classes = [AllowAny]
 
@@ -33,6 +39,9 @@ class LoginView(generics.GenericAPIView):
 
 
 class ProfileView(generics.RetrieveAPIView):
+    """
+    Вью для просмотра профиля пользователя
+    """
     queryset = User.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [IsAuthenticated]
@@ -42,6 +51,9 @@ class ProfileView(generics.RetrieveAPIView):
 
 
 class LogoutView(generics.GenericAPIView):
+    """
+    Вью для логаута пользователя
+    """
     permission_classes = [IsAuthenticated]
 
     def post(self, request):
