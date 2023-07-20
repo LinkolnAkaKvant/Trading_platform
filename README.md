@@ -1,4 +1,6 @@
-# Тестовое задание
+# Trading_platform
+
+A small application that shows relationships with suppliers.
 
 ### Технические требования:
 - Python 3.8+  
