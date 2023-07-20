@@ -5,7 +5,7 @@ A small application that shows relationships with suppliers.
 ### Технические требования:
 - Python 3.10  
 - Django 4.2.1 
-- DRF 3.10+  
+- DRF 3.14.0 
 - PostgreSQL 10+  
 
 При выполнении тестового задания вы можете дополнительно использовать любые сторонние Python библиотеки, без всяких ограничений.
